@@ -1,0 +1,3 @@
+/Users/nicholastaylor/Documents/Programming/AOC22/cmake-build-debug/CMakeFiles/AOC22.dir
+/Users/nicholastaylor/Documents/Programming/AOC22/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nicholastaylor/Documents/Programming/AOC22/cmake-build-debug/CMakeFiles/rebuild_cache.dir
