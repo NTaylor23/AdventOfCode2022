@@ -9,4 +9,5 @@ add_executable(AOC22
         source/parser.cpp
         source/day01.cpp
         source/day02.cpp
+        source/day03.cpp
         source/advent.h)

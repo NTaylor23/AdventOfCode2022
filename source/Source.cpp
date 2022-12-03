@@ -7,8 +7,9 @@ int main() {
     auto start = high_resolution_clock::now();
 
     // Puzzles!
-    day01();
-    day02();
+    //day01();
+    //day02();
+    day03();
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
