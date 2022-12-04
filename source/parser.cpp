@@ -26,7 +26,7 @@ void parser::parse() {
     inFile.close();
 }
 
-void parser::split(const std::string& input_string, char delim, std::vector<std::string> out, bool strip) {
+void parser::split(const std::string& input_string, char delim, std::vector<std::string>& out, bool strip) {
 
     size_t start { 0 };
     size_t end { 0 };

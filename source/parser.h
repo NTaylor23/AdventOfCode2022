@@ -35,7 +35,8 @@ public:
     /// \param delim the delimiter
     /// \param out the vector of strings to insert values into
     /// \param strip remove leading/trailing whitespace if true, leave alone otherwise
-    void split(const std::string& input_string, char delim, VecStr out, bool strip = false);
+    void split(const std::string& input_string, char delim, VecStr& out, bool strip = false);
+
 
     /// remove leading and trailing whitespace from a string
     /// "     The cat, the bat, the hat     " ---> "The cat, the bat, the hat"
