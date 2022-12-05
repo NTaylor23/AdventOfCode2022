@@ -82,6 +82,12 @@ build CMakeFiles/AOC22.dir/source/day04.cpp.o: CXX_COMPILER__AOC22_Debug /Users/
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
+build CMakeFiles/AOC22.dir/source/day05.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day05.cpp || cmake_object_order_depends_target_AOC22
+  DEP_FILE = CMakeFiles/AOC22.dir/source/day05.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/AOC22.dir
+  OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target AOC22
@@ -90,7 +96,7 @@ build CMakeFiles/AOC22.dir/source/day04.cpp.o: CXX_COMPILER__AOC22_Debug /Users/
 #############################################
 # Link the executable AOC22
 
-build AOC22: CXX_EXECUTABLE_LINKER__AOC22_Debug CMakeFiles/AOC22.dir/source/Source.cpp.o CMakeFiles/AOC22.dir/source/parser.cpp.o CMakeFiles/AOC22.dir/source/day01.cpp.o CMakeFiles/AOC22.dir/source/day02.cpp.o CMakeFiles/AOC22.dir/source/day03.cpp.o CMakeFiles/AOC22.dir/source/day04.cpp.o
+build AOC22: CXX_EXECUTABLE_LINKER__AOC22_Debug CMakeFiles/AOC22.dir/source/Source.cpp.o CMakeFiles/AOC22.dir/source/parser.cpp.o CMakeFiles/AOC22.dir/source/day01.cpp.o CMakeFiles/AOC22.dir/source/day02.cpp.o CMakeFiles/AOC22.dir/source/day03.cpp.o CMakeFiles/AOC22.dir/source/day04.cpp.o CMakeFiles/AOC22.dir/source/day05.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
   OBJECT_DIR = CMakeFiles/AOC22.dir
   POST_BUILD = :

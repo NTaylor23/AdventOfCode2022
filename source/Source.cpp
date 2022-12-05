@@ -11,6 +11,7 @@ int main() {
     day02();
     day03();
     day04();
+    day05();
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);

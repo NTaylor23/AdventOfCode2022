@@ -7,7 +7,6 @@ auto day02() -> int {
     VecStr rps = p.getStrs();
 
     int part1 = 0, part2 = 0;
-
     for (const std::string& play : rps) {
         int them = play.at(0) - 'A', us = play.at(2) - 'X';
         if (them == (us + 2) % 3) {

@@ -45,3 +45,18 @@ void parser::strip(std::string &input_string) {
     while (input_string[right] == ' ') {right--;}
     input_string = input_string.substr(left, right - left + 1);
 }
+
+VecStr parser::split_to_new(const std::string &input_string, char delim, bool strip) {
+    VecStr out;
+    size_t start { 0 };
+    size_t end { 0 };
+
+    constexpr size_t npos = std::string::npos;
+
+    while ((start = input_string.find_first_not_of(delim, end)) != npos) {
+        end = input_string.find(delim, start);
+        out.push_back(input_string.substr(start, end - start));
+    }
+
+    return out;
+}

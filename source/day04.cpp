@@ -28,7 +28,7 @@ auto day04() -> int {
         part2 += has_overlap(left, right, true);
     }
 
-    std::cout << "Day 3:\n" << part1 << " pairs fully contain the other pair.\n"
+    std::cout << "Day 4:\n" << part1 << " pairs fully contain the other pair.\n"
               << part2 << " pairs partially contain the other pair.\n\n";
     return 0;
 }
