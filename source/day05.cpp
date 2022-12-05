@@ -33,8 +33,8 @@ void parse_instruction(const std::string& line, parser& p, std::vector<std::dequ
 
 auto day05() -> int {
     parser p("input/day05.txt", "str");
-    std::string part1, part2;
     const VecStr in = p.getStrs();
+    std::string part1, part2;
     VecStr stack_definition;
 
     auto itr = in.begin();
@@ -69,5 +69,6 @@ auto day05() -> int {
 
     std::cout << "Day 5:\nAt the end of our reshuffling, we get the letters " << part1 << " at the top of each stack.\n"
               << "After upgrading to a new CrateMover 9001, we get " << part2 << " at the top of each stack.\n\n";
+
     return 0;
 }
