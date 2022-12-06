@@ -58,7 +58,8 @@
 				3,
 				4,
 				5,
-				6
+				6,
+				7
 			]
 		}
 	],
@@ -97,14 +98,14 @@
 				3,
 				4,
 				5,
-				6
+				6,
+				7
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				7,
 				8
 			]
 		}
@@ -155,12 +156,13 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "source/advent.h",
-			"sourceGroupIndex" : 1
+			"compileGroupIndex" : 0,
+			"path" : "source/day06.cpp",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "source/timer.h",
+			"path" : "source/advent.h",
 			"sourceGroupIndex" : 1
 		}
 	],

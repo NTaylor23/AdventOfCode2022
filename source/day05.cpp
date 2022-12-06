@@ -31,6 +31,7 @@ void parse_instruction(const std::string& line, parser& p, std::vector<std::dequ
     }
 }
 
+// Slow and convoluted - come back to this one
 auto day05() -> int {
     parser p("input/day05.txt", "str");
     const VecStr in = p.getStrs();
@@ -39,19 +40,17 @@ auto day05() -> int {
 
     auto itr = in.begin();
     while (!itr->empty()) { // stack definition ends with an empty line
-        stack_definition.push_back(*itr++);
+        stack_definition.emplace_back(*itr++);
     }
 
-    VecStr range = p.split_to_new(stack_definition.back(), ' ');
-    size_t amt = stoi(range.back());
-    std::vector<std::deque<char>> stacks(amt);
+    std::vector<std::deque<char>> stacks(stack_definition.size());
+    stacks.reserve(stack_definition.size());
 
     for (const std::string& line : stack_definition) {
         for (int i = 0; i < line.length(); i += 4) { // Tokens are separated by four chars each
-            std::string curr = line.substr(i, 4);
-            if (!curr.starts_with(' ')) {
-                int idx = i / 4;
-                stacks[idx].push_front(curr[1]); // Just the letter, skip the brackets.
+            if (line[i] != ' ') {
+                int idx = i >> 2;
+                stacks[idx].push_front(line[i + 1]); // Just the letter, skip the brackets.
             }
         }
     }
@@ -67,6 +66,7 @@ auto day05() -> int {
         part2 += part2Copy[i].back();
     }
 
+    //VCTFTJQCG, GCFGLDNJZ
     std::cout << "Day 5:\nAt the end of our reshuffling, we get the letters " << part1 << " at the top of each stack.\n"
               << "After upgrading to a new CrateMover 9001, we get " << part2 << " at the top of each stack.\n\n";
 
