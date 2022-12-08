@@ -3,6 +3,7 @@
 #include <fstream>
 #include <deque>
 
+// Reader's note: Please do not judge me by virtue of this code. I am trying new things!
 int find_unique_index(const std::string& signal, int sz) {
     char head, tail;
     bool flag;
@@ -40,7 +41,8 @@ auto day06() -> int {
 
     part1 = find_unique_index(content, 4);
     part2 = find_unique_index(content, 14);
-    std::cout << part1 << " " << part2;
+    std::cout << "Day 6:\nThe first start-of-packet marker happens at character #" << part1 << ".\n"
+    << "After upping the ante to the first 14 characters, the start-of-packet marker is at character #" << part2 << ".\n";
 
     return 0;
 }

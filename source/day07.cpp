@@ -1,67 +1,52 @@
 #include "advent.h"
+#include "parser.h"
 #include <iostream>
 #include <unordered_map>
-#include <fstream> //will need when we delete parser
-#include <vector>
 #include <deque>
-#include "parser.h"
 
 auto day07() -> int {
-    int part1 = 0, part2 = 0;
     std::string line;
-    parser p("input/day07.txt", "str"); // do a better split
     std::fstream inFile("input/day07.txt");
     assert (inFile.is_open());
 
+    constexpr size_t totalDiskSpace {70000000};
+    constexpr size_t requiredSpace {30000000};
+    int part1 = 0, part2;
+
     std::deque<std::string> pathRoute{""};
-
     std::unordered_map<std::string, int> sizes;
-    std::unordered_map<std::string, std::vector<std::string>> subdirs;
-
-    std::string currentDir;
 
     while (getline(inFile, line)) {
-
         if (line.starts_with("$ cd")) {
-
-            if (!line.ends_with("..")) {
-
-                currentDir = pathRoute.back() + line.substr(5);
-                pathRoute.emplace_back(currentDir);
-
-                if (sizes.find(currentDir) == sizes.end()) {
-                    sizes.insert({currentDir, 0});
-                }
-
-                if (subdirs.find(currentDir) == subdirs.end()) {
-                    subdirs.insert({currentDir, std::vector<std::string>{}});
-                }
-
-            } else {
+            if (line.ends_with("..")) {
                 pathRoute.pop_back();
-                currentDir = pathRoute.back();
+            } else {
+                std::string currentDir = line.substr(5);
+                pathRoute.push_back(currentDir);
             }
-
         } else if (isdigit(line[0])) {
-            sizes[currentDir] += std::stoi(p.split_to_new(line, ' ')[0]);
-
-        } else if (line.starts_with("dir")) {
-            subdirs[currentDir].emplace_back(currentDir + line.substr(4));
+            std::string currDir;
+            for (const auto& loc : pathRoute) {
+                currDir += loc;
+                if (sizes.find(currDir) == sizes.end()) {
+                    sizes.insert({loc, 0});
+                }
+                sizes[currDir] += std::stoi(parser::split_to_new(line, ' ')[0]);
+            }
         }
     }
 
-    for (auto const& [directory, subdirectories] : subdirs) {
-        //std::cout << directory << '\n';
-        for (const std::string& dir : subdirectories) {
-            //std::cout << "--" << dir << '\n';
-            sizes[directory] += sizes[dir];
-        }
+    part2 = sizes["/"];
+    auto freeSpace = totalDiskSpace - part2;
+    auto goal = requiredSpace - freeSpace;
+
+    for (auto const& [directory, size] : sizes) {
+        if (size <= 100000) part1 += size;
+        if (size > goal) part2 = std::min(size, part2);
     }
 
-    for (auto const& [k, v] : subdirs) {
-        if (sizes[k] <= 100000) part1 += sizes[k];
-    }
-    std::cout << part1;
+    std::cout << "Day 7:\nThe sum of the total sizes of our directories is " << part1 << ".\n"
+    << "The total size of the smallest directory that'll free up the space we need is " << part2 << '\n';
 
     return 0;
 }
