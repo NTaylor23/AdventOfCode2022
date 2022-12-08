@@ -7,5 +7,6 @@ auto day03() -> int;
 auto day04() -> int;
 auto day05() -> int;
 auto day06() -> int;
+auto day07() -> int;
 
 #endif //AOC22_ADVENT_H

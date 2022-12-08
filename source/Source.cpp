@@ -12,7 +12,8 @@ int main() {
     //day03();
     //day04();
     //day05();
-    day06();
+    //day06();
+    day07();
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
