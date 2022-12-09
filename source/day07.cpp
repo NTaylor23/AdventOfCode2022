@@ -46,7 +46,7 @@ auto day07() -> int {
     }
 
     std::cout << "Day 7:\nThe sum of the total sizes of our directories is " << part1 << ".\n"
-    << "The total size of the smallest directory that'll free up the space we need is " << part2 << '\n';
+    << "The total size of the smallest directory that'll free up the space we need is " << part2 << "\n\n";
 
     return 0;
 }
