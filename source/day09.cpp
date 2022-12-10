@@ -1,17 +1,17 @@
 #include "advent.h"
-#include <cmath>
 #include <complex>
-#include <iostream>
 #include <fstream>
-#include <sstream>
-#include <vector>
+#include <iostream>
+#include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 using namespace std::complex_literals;
 #define Complex std::complex<int>
 
 const Complex DELTAS[4] {1, -1, 1i, -1i};
 
+// Return the proper scalar according to the char read from the input
 Complex getDelta (const char direction) {
     if (direction == 'L') return DELTAS[1];
     if (direction == 'U') return DELTAS[2];
@@ -19,23 +19,41 @@ Complex getDelta (const char direction) {
     return DELTAS[0];
 }
 
-// this is fine
+// Compute Chebyshev distance. If it's more than 1, tail must move
 bool isAdjacent(const Complex& a, const Complex& b) {
     return std::max(abs(a.real() - b.real()), abs(a.imag() - b.imag())) <= 1;
 }
 
-// this is fine
+// Check if head/tail are in the same row if moving up/down, or the same column if moving right/left
+bool sharesCommonAxis(const Complex& a, const Complex& b, char direction) {
+    if (direction == 'L' || direction == 'R') {
+        return a.imag() == b.imag();
+    }
+    return a.real() == b.real();
+}
+
+// Move one space according to the direction in the input
 void moveCardinal(Complex& obj, const Complex& delta) {
     obj += delta;
 }
 
-// must take into account whether direction is vertical or horizontal... and then add the correct opposing delta
-void moveDiagonal(Complex& obj, const Complex& target, const Complex& direction) {
-    moveCardinal(obj, direction);
-    if (isAdjacent(obj + 1, target)) {
-        obj += 1;
-    } else if (isAdjacent(obj - 1, target)) {
-        obj -= 1;
+// Move one space cardinally (according to input direction), then find the appropriate direction for a diagonal move
+void moveDiagonal(Complex& obj, const Complex& target, const Complex& scalar, char direction) {
+    moveCardinal(obj, scalar);
+    for (const Complex& d : DELTAS) {
+        if (isAdjacent(obj + d, target) && sharesCommonAxis(obj + d, target, direction)) {
+            obj += d;
+            return;
+        }
+    }
+}
+
+// Add the xy value to the lookup table
+void addToTable(int x, int y, auto& table) {
+    if (table.find(x) == table.end()) {
+        table.insert({x, std::unordered_set<int>{y}});
+    } else {
+        table[x].insert(y);
     }
 }
 
@@ -44,40 +62,37 @@ auto day09() -> int {
     std::fstream inFile("input/day09.txt");
     assert (inFile.is_open());
 
-    std::complex<int> h{0}, t{0}, target{0};
-    std::unordered_set<std::string> positionsVisitedByTail{"00"};
+    std::complex<int> head{0}, tail{0}, target{0};
+    std::unordered_map<int, std::unordered_set<int>> lookup;
 
-    char hFlag, tFlag;
     while (getline(inFile, line)) {
+        char direction = line[0]; // U, D, L, R
+        int distance = line[2] - '0'; // Distance to move
+        Complex scalar = getDelta(direction); // Direction variable represented as complex number
+        target = head + (distance * scalar); // Head can only move via taxicab geometry,
+        // so we just add the scalar to the head
 
-        char direction = line[0];
-        int distance = line[2] - '0';
-        hFlag = direction;
-        Complex currentDelta = getDelta(direction);
-        target = h + (distance * currentDelta);
-
-        while (h != target) {
-            moveCardinal(h, currentDelta); //moveCardinal standard deltas according to taxicab geometry
-            if (h.real() == 4 && h.imag() == 2) {
-                std::cout << "stop";
-            }
-            if (!isAdjacent(h, t)) {
-                if (tFlag != hFlag) {
-                    moveDiagonal(t, h, currentDelta);
-                } else {
-                    moveCardinal(t, currentDelta);
+        while (head != target) {
+            moveCardinal(head, scalar); // move the head one place
+            if (!isAdjacent(head, tail)) { // check if the tail is adjacent or overlapping
+                if (sharesCommonAxis(head, tail, direction)) { // tail is in the same row/col as the head, can be moved cardinally
+                    moveCardinal(tail, scalar);
+                } else { // tail is not in the same row/col and must be moved diagonally
+                    moveDiagonal(tail, head, scalar, direction);
                 }
             }
-            tFlag = hFlag;
-            std::stringstream ss;
-            ss << t.real() << t.imag();
-            positionsVisitedByTail.insert(ss.str());
+            addToTable(tail.real(), tail.imag(), lookup); // add position of tail to lookup table
         }
-        //std::cout << "H: [" << h.real() << ", " << h.imag() << "]\n";
-        //std::cout << "T: [" << t.real() << ", " << t.imag() << "]\n";
+    }
+    int part1 {0};
+    // the sum of all sets of y values will be the number of unique points visited
+    // this is kind of an awkward implementation, but works as a kludge to avoid hashing the Complex data type
+    for (auto& [k, v] : lookup) {
+        part1 += v.size();
     }
 
-    std::cout << "This will not work...";
+    std::cout << part1; //this gives incorrect (low) value.
+    // Tested against someone else's solution, it's about 4000 less than it should be.
 
     return 0;
 }
