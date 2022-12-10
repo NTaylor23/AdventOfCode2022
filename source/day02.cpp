@@ -18,8 +18,8 @@ auto day02() -> int {
 
         part1 += 1 + us;
         part2 += (us * 3) + std::min<uint>((us + them) % 3 - 1, 2) + 1;
-        // ^ Values of a move must fall between 1 and 3. Subtract the move's numeric value (between 0 and 2),
-        // and you'll get -1 when the correct opposing move goes to 3 from 1.
+        // ^ Values of a move must fall between 1 and 3. Subtract the moveCardinal's numeric value (between 0 and 2),
+        // and you'll get -1 when the correct opposing moveCardinal goes to 3 from 1.
         // unsigned int underflow will make any negative value into some huge number, and from there, we just find
         // std::min of that value and 2, then add 1.
     }
