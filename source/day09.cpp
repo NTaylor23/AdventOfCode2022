@@ -5,11 +5,14 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <unistd.h>
 
 using namespace std::complex_literals;
 #define Complex std::complex<int>
 
-const Complex DELTAS[4] {1, -1, 1i, -1i};
+const Complex DELTAS[4] {1, -1, 1i, -1i}; // R L U D
+const int ROPE_LENGTH{10}, ZERO_X = 11, ZERO_Y = 14;
+Complex rope[ROPE_LENGTH] {0};
 
 // Return the proper scalar according to the char read from the input
 Complex getDelta (const char direction) {
@@ -29,7 +32,7 @@ bool sharesCommonAxis(const Complex& a, const Complex& b, char direction) {
     if (direction == 'L' || direction == 'R') {
         return a.imag() == b.imag();
     }
-    return a.real() == b.real();
+    return a.real() == b.real() || a.imag() == b.imag();
 }
 
 // Move one space according to the direction in the input
@@ -41,7 +44,10 @@ void moveCardinal(Complex& obj, const Complex& delta) {
 void moveDiagonal(Complex& obj, const Complex& target, const Complex& scalar, char direction) {
     moveCardinal(obj, scalar);
     for (const Complex& d : DELTAS) {
-        if (isAdjacent(obj + d, target) && sharesCommonAxis(obj + d, target, direction)) {
+        // THE FUCKING BUG IS RIGHT HERE. IT DOESN'T MOVE DIAGONALLY FOR AN UNKNOWN REASON
+        bool adj = isAdjacent(obj + d, target);
+        //bool ca = sharesCommonAxis(obj + d, target, direction);
+        if (adj && d != scalar) {
             obj += d;
             return;
         }
@@ -57,42 +63,111 @@ void addToTable(int x, int y, auto& table) {
     }
 }
 
+void move(const Complex& head, Complex& follower, const Complex& scalar, char direction) {
+    while (!isAdjacent(head, follower)) {
+        if (sharesCommonAxis(head, follower, direction)) {
+            moveCardinal(follower, scalar);
+        } else {
+            moveDiagonal(follower, head, scalar, direction);
+        }
+    }
+}
+
+void clearTable(auto& table) {
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 26; j++) {
+            table[i][j] = '.';
+        }
+    }
+}
+
+void printTable(auto& table) {
+    for (int i = 0; i < 20; i++) {
+       for (int j = 0; j < 26; j++) {
+           std::cout << table[i][j];
+       }
+       std::cout << '\n';
+    }
+    std::cout << '\n';
+}
+
+void adjustTrailing(const Complex& scalar, char direction, auto& table) {
+    for (int i = 1; i < ROPE_LENGTH; i++) {
+        move(rope[i - 1], rope[i], scalar, direction);
+        table[ZERO_Y - rope[i].imag()][ZERO_X + rope[i].real()] = '0' + i;
+    }
+}
+
 auto day09() -> int {
     std::string line;
     std::fstream inFile("input/day09.txt");
     assert (inFile.is_open());
 
-    std::complex<int> head{0}, tail{0}, target{0};
-    std::unordered_map<int, std::unordered_set<int>> lookup;
+    std::complex<int> target{0};
+    std::unordered_map<int, std::unordered_set<int>> lookupTail;
+    std::unordered_map<int, std::unordered_set<int>> lookupRope;
 
+    std::vector<std::vector<char>> table;
+    for (int i = 0; i < 20; i++) {
+        std::vector<char> row;
+        for (int j = 0; j < 26; j++) {
+            row.emplace_back('.');
+        }
+        table.emplace_back(row);
+    }
+
+    clearTable(table);
+
+    std::cout << "Initial: [" << rope[0].real() << ", " << rope[0].imag() << "]\n";
     while (getline(inFile, line)) {
-        char direction = line[0]; // U, D, L, R
-        int distance = line[2] - '0'; // Distance to move
-        Complex scalar = getDelta(direction); // Direction variable represented as complex number
-        target = head + (distance * scalar); // Head can only move via taxicab geometry,
-        // so we just add the scalar to the head
 
-        while (head != target) {
-            moveCardinal(head, scalar); // move the head one place
-            if (!isAdjacent(head, tail)) { // check if the tail is adjacent or overlapping
-                if (sharesCommonAxis(head, tail, direction)) { // tail is in the same row/col as the head, can be moved cardinally
-                    moveCardinal(tail, scalar);
-                } else { // tail is not in the same row/col and must be moved diagonally
-                    moveDiagonal(tail, head, scalar, direction);
-                }
+        char direction = line[0]; // U, D, L, R
+        int distance = std::stoi(line.substr(2)); // Distance to move
+        Complex scalar = getDelta(direction); // Direction variable represented as complex number
+        target = rope[0] + (distance * scalar);
+        std::cout << "~~~~~~~~~~~~ " << line << " ~~~~~~~~~~~~\n";
+
+        while (rope[0] != target) {
+
+            moveCardinal(rope[0], scalar); // move the head
+            table[ZERO_Y - rope[0].imag()][ZERO_X + rope[0].real()] = 'H';
+
+            if (line == "L 8") {
+                std::cout << "";
             }
-            addToTable(tail.real(), tail.imag(), lookup); // add position of tail to lookup table
+
+            adjustTrailing(scalar, direction, table);
+            printTable(table);
+            usleep(100000);
+            clearTable(table);
+            addToTable(rope[1].real(), rope[1].imag(), lookupTail);
+            addToTable(rope[9].real(), rope[9].imag(), lookupRope);
         }
     }
-    int part1 {0};
-    // the sum of all sets of y values will be the number of unique points visited
-    // this is kind of an awkward implementation, but works as a kludge to avoid hashing the Complex data type
-    for (auto& [k, v] : lookup) {
+    int part1{0}, part2{0};
+    for (auto& [k, v] : lookupTail) {
         part1 += v.size();
     }
 
-    std::cout << part1; //this gives incorrect (low) value.
-    // Tested against someone else's solution, it's about 4000 less than it should be.
+    for (auto& [k, v] : lookupRope) {
+        part2 += v.size();
+    }
+
+    std::cout << part1 << " " << part2;
+
+    /*
+     * We want to see...
+     * Initial 0, 0
+     *
+     * R 5  -> 0, 0
+     * U 8  -> 0, 0
+     * L 8  -> 1, 3
+     * D 3  -> 1, 3
+     * R 17 -> 5, 5
+     * D 10 -> 10, 0
+     * L 25 -> -1, -5
+     * U 20 -> -11, 6
+     */
 
     return 0;
 }
