@@ -41,6 +41,7 @@ auto day06() -> int {
 
     part1 = find_unique_index(content, 4);
     part2 = find_unique_index(content, 14);
+    inFile.close();
     std::cout << "Day 6:\nThe first start-of-packet marker happens at character #" << part1 << ".\n"
     << "After upping the ante to the first 14 characters, the start-of-packet marker is at character #" << part2 << ".\n\n";
 

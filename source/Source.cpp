@@ -15,7 +15,8 @@ int main() {
     //day06();
     //day07();
     //day08();
-    day09();
+    //day09(); //incomplete
+    day10();
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);

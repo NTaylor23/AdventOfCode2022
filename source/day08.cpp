@@ -50,6 +50,7 @@ auto day08() -> int {
         treeMap.emplace_back(row);
     }
 
+    inFile.close();
     size_t maxRow = treeMap.size(), maxCol = treeMap[0].size();
     part1 += ((maxCol - 1) * 2) + ((maxRow - 1) * 2);
 

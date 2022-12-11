@@ -32,7 +32,7 @@ bool sharesCommonAxis(const Complex& a, const Complex& b, char direction) {
     if (direction == 'L' || direction == 'R') {
         return a.imag() == b.imag();
     }
-    return a.real() == b.real() || a.imag() == b.imag();
+    return a.real() == b.real();
 }
 
 // Move one space according to the direction in the input
@@ -40,11 +40,10 @@ void moveCardinal(Complex& obj, const Complex& delta) {
     obj += delta;
 }
 
-// Move one space cardinally (according to input direction), then find the appropriate direction for a diagonal move
+//Move one space cardinally (according to input direction), then find the appropriate direction for a diagonal move
 void moveDiagonal(Complex& obj, const Complex& target, const Complex& scalar, char direction) {
     moveCardinal(obj, scalar);
     for (const Complex& d : DELTAS) {
-        // THE FUCKING BUG IS RIGHT HERE. IT DOESN'T MOVE DIAGONALLY FOR AN UNKNOWN REASON
         bool adj = isAdjacent(obj + d, target);
         //bool ca = sharesCommonAxis(obj + d, target, direction);
         if (adj && d != scalar) {
@@ -66,8 +65,10 @@ void addToTable(int x, int y, auto& table) {
 void move(const Complex& head, Complex& follower, const Complex& scalar, char direction) {
     while (!isAdjacent(head, follower)) {
         if (sharesCommonAxis(head, follower, direction)) {
+            std::cout << "Cardinal\n";
             moveCardinal(follower, scalar);
         } else {
+            std::cout << "Diagonal\n";
             moveDiagonal(follower, head, scalar, direction);
         }
     }
@@ -83,10 +84,10 @@ void clearTable(auto& table) {
 
 void printTable(auto& table) {
     for (int i = 0; i < 20; i++) {
-       for (int j = 0; j < 26; j++) {
-           std::cout << table[i][j];
-       }
-       std::cout << '\n';
+        for (int j = 0; j < 26; j++) {
+            std::cout << table[i][j];
+        }
+        std::cout << '\n';
     }
     std::cout << '\n';
 }
@@ -137,13 +138,15 @@ auto day09() -> int {
             }
 
             adjustTrailing(scalar, direction, table);
+            std::cout << direction << "\n";
             printTable(table);
-            usleep(100000);
+            usleep(300000);
             clearTable(table);
             addToTable(rope[1].real(), rope[1].imag(), lookupTail);
             addToTable(rope[9].real(), rope[9].imag(), lookupRope);
         }
     }
+    inFile.close();
     int part1{0}, part2{0};
     for (auto& [k, v] : lookupTail) {
         part1 += v.size();
