@@ -14,16 +14,18 @@ bool calculateVisibility(int i, int j, auto const& map) {
     for (int idx = i - 1; idx >= 0; idx--) {
         ++upView;
         if (map[idx][j] >= start) { up = false; break; }
-
     }
+
     for (int idx = i + 1; idx < map.size(); idx++) {
         ++downView;
         if (map[idx][j] >= start) { down = false; break; }
     }
+
     for (int idx = j - 1; idx >= 0; idx--) {
         ++leftView;
         if (map[i][idx] >= start) { left = false; break; }
     }
+
     for (int idx = j + 1; idx < map[0].size(); idx++) {
         ++rightView;
         if (map[i][idx] >= start) { right = false; break; }

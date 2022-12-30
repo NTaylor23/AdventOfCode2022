@@ -14,6 +14,7 @@ auto day07() -> int {
     int part1 = 0, part2;
 
     std::deque<std::string> pathRoute{""};
+    //~/a/b
     std::unordered_map<std::string, int> sizes;
 
     while (getline(inFile, line)) {
@@ -31,7 +32,7 @@ auto day07() -> int {
                 if (sizes.find(currDir) == sizes.end()) {
                     sizes.insert({loc, 0});
                 }
-                sizes[currDir] += std::stoi(parser::split_to_new(line, ' ')[0]);
+                sizes[currDir] += std::stoi(parser::split(line, " ")[0]);
             }
         }
     }

@@ -16,12 +16,16 @@ int main() {
     //day07();
     //day08();
     //day09(); //incomplete
-    day10();
+    //day10();
+    //day11();
+    //day12();
+    //day13();
+    day21();
 
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
+    auto duration = duration_cast<milliseconds>(stop - start);
     std::cout << "\n\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n"
-                 "Total processing time: " << duration.count() << " microseconds.\n";
+                 "Total processing time: " << duration.count() << " ms.\n";
 
     return 0;
 }

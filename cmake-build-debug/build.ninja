@@ -48,73 +48,97 @@ build cmake_object_order_depends_target_AOC22: phony || CMakeFiles/AOC22.dir
 
 build CMakeFiles/AOC22.dir/source/Source.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/Source.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/Source.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/parser.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/parser.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/parser.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day01.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day01.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day01.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day02.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day02.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day02.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day03.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day03.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day03.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day04.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day04.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day04.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day05.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day05.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day05.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day06.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day06.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day06.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day07.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day07.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day07.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day08.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day08.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day08.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day09.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day09.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day09.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
 build CMakeFiles/AOC22.dir/source/day10.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day10.cpp || cmake_object_order_depends_target_AOC22
   DEP_FILE = CMakeFiles/AOC22.dir/source/day10.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
+  OBJECT_DIR = CMakeFiles/AOC22.dir
+  OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
+
+build CMakeFiles/AOC22.dir/source/day11.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day11.cpp || cmake_object_order_depends_target_AOC22
+  DEP_FILE = CMakeFiles/AOC22.dir/source/day11.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
+  OBJECT_DIR = CMakeFiles/AOC22.dir
+  OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
+
+build CMakeFiles/AOC22.dir/source/day12.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day12.cpp || cmake_object_order_depends_target_AOC22
+  DEP_FILE = CMakeFiles/AOC22.dir/source/day12.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
+  OBJECT_DIR = CMakeFiles/AOC22.dir
+  OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
+
+build CMakeFiles/AOC22.dir/source/day13.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day13.cpp || cmake_object_order_depends_target_AOC22
+  DEP_FILE = CMakeFiles/AOC22.dir/source/day13.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
+  OBJECT_DIR = CMakeFiles/AOC22.dir
+  OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
+
+build CMakeFiles/AOC22.dir/source/day21.cpp.o: CXX_COMPILER__AOC22_Debug /Users/nicholastaylor/Documents/Programming/AOC22/source/day21.cpp || cmake_object_order_depends_target_AOC22
+  DEP_FILE = CMakeFiles/AOC22.dir/source/day21.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0 -std=gnu++20
   OBJECT_DIR = CMakeFiles/AOC22.dir
   OBJECT_FILE_DIR = CMakeFiles/AOC22.dir/source
 
@@ -126,8 +150,8 @@ build CMakeFiles/AOC22.dir/source/day10.cpp.o: CXX_COMPILER__AOC22_Debug /Users/
 #############################################
 # Link the executable AOC22
 
-build AOC22: CXX_EXECUTABLE_LINKER__AOC22_Debug CMakeFiles/AOC22.dir/source/Source.cpp.o CMakeFiles/AOC22.dir/source/parser.cpp.o CMakeFiles/AOC22.dir/source/day01.cpp.o CMakeFiles/AOC22.dir/source/day02.cpp.o CMakeFiles/AOC22.dir/source/day03.cpp.o CMakeFiles/AOC22.dir/source/day04.cpp.o CMakeFiles/AOC22.dir/source/day05.cpp.o CMakeFiles/AOC22.dir/source/day06.cpp.o CMakeFiles/AOC22.dir/source/day07.cpp.o CMakeFiles/AOC22.dir/source/day08.cpp.o CMakeFiles/AOC22.dir/source/day09.cpp.o CMakeFiles/AOC22.dir/source/day10.cpp.o
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+build AOC22: CXX_EXECUTABLE_LINKER__AOC22_Debug CMakeFiles/AOC22.dir/source/Source.cpp.o CMakeFiles/AOC22.dir/source/parser.cpp.o CMakeFiles/AOC22.dir/source/day01.cpp.o CMakeFiles/AOC22.dir/source/day02.cpp.o CMakeFiles/AOC22.dir/source/day03.cpp.o CMakeFiles/AOC22.dir/source/day04.cpp.o CMakeFiles/AOC22.dir/source/day05.cpp.o CMakeFiles/AOC22.dir/source/day06.cpp.o CMakeFiles/AOC22.dir/source/day07.cpp.o CMakeFiles/AOC22.dir/source/day08.cpp.o CMakeFiles/AOC22.dir/source/day09.cpp.o CMakeFiles/AOC22.dir/source/day10.cpp.o CMakeFiles/AOC22.dir/source/day11.cpp.o CMakeFiles/AOC22.dir/source/day12.cpp.o CMakeFiles/AOC22.dir/source/day13.cpp.o CMakeFiles/AOC22.dir/source/day21.cpp.o
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=13.0
   OBJECT_DIR = CMakeFiles/AOC22.dir
   POST_BUILD = :
   PRE_LINK = :

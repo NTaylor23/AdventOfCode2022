@@ -1,11 +1,12 @@
 #include "advent.h"
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <vector>
 
 
 static int y{0};
-std::vector<std::vector<char>> CRT;
+std::vector<std::vector<char>> CRT(6, std::vector<char>(40));
 
 int addSignalStrength(const int &cycles, const int &x) {
     return cycles * x;
@@ -19,14 +20,11 @@ void drawPixel(int cycle, int x, const int row) {
 
 void cycle(int &cycles, int &signalStrength, int &x) {
     drawPixel(cycles % 40, x, y);
+    y += cycles % 40 == 0 && cycles > 0;
     cycles++;
 
     if (cycles == 20 || (cycles - 20) % 40 == 0) {
         signalStrength += addSignalStrength(cycles, x);
-    }
-
-    if (cycles % 40 == 0 && cycles > 0) {
-        y++;
     }
 }
 
@@ -36,15 +34,6 @@ auto day10() -> int {
     assert (inFile.is_open());
 
     int x = 1, cycles = 0, signalStrength = 0;
-
-    for (int i = 0; i < 6; i++) {
-        std::vector<char> row;
-        for (int j = 0; j < 40; j++) {
-            row.emplace_back('.');
-        }
-        CRT.emplace_back(row);
-    }
-
     while (getline(inFile, line)) {
         if (line == "noop") {
             cycle(cycles, signalStrength, x);
@@ -62,7 +51,9 @@ auto day10() -> int {
 
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 40; j++) {
-            std::cout << CRT[i][j] << " ";
+            if (CRT[i][j] == '#') {
+                std::cout << CRT[i][j];
+            } else std::cout << " ";
         }
         std::cout << '\n';
     }

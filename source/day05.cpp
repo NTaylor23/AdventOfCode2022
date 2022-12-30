@@ -22,7 +22,7 @@ void move(int quantity, int source, int dest, std::vector<std::deque<char>>& sta
 }
 
 void parse_instruction(const std::string& line, parser& p, std::vector<std::deque<char>>& stacks, bool part2 = false) {
-    VecStr nums = p.split_to_new(line, ' ');
+    VecStr nums = parser::split(line, " ");
     int quantity = stoi(nums[1]), source = stoi(nums[3]) - 1, dest = stoi(nums[5]) - 1;
     if (part2) {
         move_ordered(quantity, source, dest, stacks);

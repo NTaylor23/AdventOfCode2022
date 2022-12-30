@@ -26,37 +26,19 @@ void parser::parse() {
     inFile.close();
 }
 
-void parser::split(const std::string& input_string, char delim, std::vector<std::string>& out, bool strip) {
-
-    size_t start { 0 };
-    size_t end { 0 };
-
-    constexpr size_t npos = std::string::npos;
-
-    while ((start = input_string.find_first_not_of(delim, end)) != npos) {
-        end = input_string.find(delim, start);
-        out.push_back(input_string.substr(start, end - start));
+void tokenize(std::string s, const std::string& delim, std::vector<std::string>& v) {
+    int idx = s.find(delim);
+    if (idx < 0) {
+        v.emplace_back(s);
+        return;
     }
+    v.emplace_back(s.substr(0, idx));
+    tokenize(s.substr(idx + delim.size()), delim, v);
 }
 
-void parser::strip(std::string &input_string) {
-    unsigned int left = 0, right = input_string.size() - 1;
-    while (input_string[left] == ' ') {left++;}
-    while (input_string[right] == ' ') {right--;}
-    input_string = input_string.substr(left, right - left + 1);
+std::vector<std::string> parser::split(std::string s, const std::string &delim) {
+    std::vector<std::string> res;
+    tokenize(s, delim, res);
+    return res;
 }
 
-VecStr parser::split_to_new(const std::string &input_string, char delim, bool strip) {
-    VecStr out;
-    size_t start { 0 };
-    size_t end { 0 };
-
-    constexpr size_t npos = std::string::npos;
-
-    while ((start = input_string.find_first_not_of(delim, end)) != npos) {
-        end = input_string.find(delim, start);
-        out.push_back(input_string.substr(start, end - start));
-    }
-
-    return out;
-}
