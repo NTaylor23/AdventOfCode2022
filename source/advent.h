@@ -14,6 +14,7 @@ auto day10() -> int;
 auto day11() -> int;
 auto day12() -> int;
 auto day13() -> int;
-auto day21() -> int;
+auto day21a() -> int;
+auto day21b() -> int;
 
 #endif //AOC22_ADVENT_H

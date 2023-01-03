@@ -42,3 +42,7 @@ std::vector<std::string> parser::split(std::string s, const std::string &delim) 
     return res;
 }
 
+bool parser::is_number(const std::string &s) {
+    return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
+}
+

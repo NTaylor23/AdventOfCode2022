@@ -6,7 +6,7 @@
 static int maxView = 0;
 
 // Meh... brute force... refactor with complex numbers for grid traversal & maybe DFS/BFS?
-bool calculateVisibility(int i, int j, auto const& map) {
+bool calculate_visibility(int i, int j, auto const& map) {
     int start = map[i][j];
     bool up{true}, down{true}, left{true}, right{true};
     int upView = 0, downView = 0, leftView = 0, rightView = 0;
@@ -58,7 +58,7 @@ auto day08() -> int {
 
     for (int i = 1; i < treeMap.size() - 1; i++) {
         for (int j = 1; j < treeMap[0].size() - 1; j++) {
-            part1 += calculateVisibility(i, j, treeMap);
+            part1 += calculate_visibility(i, j, treeMap);
         }
     }
 

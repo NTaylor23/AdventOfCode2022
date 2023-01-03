@@ -33,6 +33,8 @@ public:
 
     /// runner function called in constructor
     void parse();
+
+    static bool is_number(const std::string &s);
 };
 
 #endif //ADVENT_H

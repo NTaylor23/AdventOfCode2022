@@ -90,7 +90,5 @@ auto day09() -> int {
         part1 += v.size();
     }
 
-    std::cout << part1;
-
     return 0;
 }

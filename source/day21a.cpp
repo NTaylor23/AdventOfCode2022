@@ -11,7 +11,6 @@
 struct Equation {
     std::variant<std::string, long> a, b;
     char op;
-
     Equation(auto &_a, auto &_b, char _op) : a(_a), b(_b), op(_op) {}
 
     [[nodiscard]] long eval() const {
@@ -36,12 +35,7 @@ struct Equation {
     void set_b(const auto &b) { this->b = b; }
 };
 
-bool is_number(const std::string &s) {
-    return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
-}
-
-
-auto day21() -> int {
+auto day21a() -> int {
     std::string line;
     std::fstream inFile("input/day21.txt");
     assert (inFile.is_open());
@@ -52,7 +46,7 @@ auto day21() -> int {
     while (getline(inFile, line)) {
         std::vector<std::string> halves = parser::split(line, ": ");
         auto val = halves[0];
-        if (is_number(halves[1])) {
+        if (parser::is_number(halves[1])) {
             literals.insert({val, std::stoi(halves[1])});
         } else {
             auto eq = parser::split(halves[1], " ");
@@ -90,8 +84,7 @@ auto day21() -> int {
             }
         }
     }
-
-    std::cout << literals["root"];
+    std::cout << "\n\nDay 10:\nThe monkey named [root] will yell out the number " << literals["root"] << ".\n";
 
     return 0;
 }

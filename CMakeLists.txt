@@ -20,5 +20,6 @@ add_executable(AOC22
         source/day11.cpp
         source/day12.cpp
         source/day13.cpp
-        source/day21.cpp
+        source/day21a.cpp
+        source/day21b.cpp
         source/advent.h)
